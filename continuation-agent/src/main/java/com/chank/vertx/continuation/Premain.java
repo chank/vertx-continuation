@@ -24,7 +24,7 @@ import java.lang.instrument.Instrumentation;
 public final class Premain {
 
     public static void premain(String agentArgs, Instrumentation instrumentation) throws Exception {
-        final RuntimeTransformer  t = RuntimeTransformer .getInstance();
+        final ContinuationTransformer t = ContinuationTransformer.getInstance();
         instrumentation.addTransformer(t, true);
     }
 

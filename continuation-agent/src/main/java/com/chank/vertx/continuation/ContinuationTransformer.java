@@ -23,11 +23,11 @@ import java.security.ProtectionDomain;
 /**
  * @author Chank
  */
-public final class RuntimeTransformer implements ClassFileTransformer {
+public final class ContinuationTransformer implements ClassFileTransformer {
 
-    private static final RuntimeTransformer INSTANCE = new RuntimeTransformer();
+    private static final ContinuationTransformer INSTANCE = new ContinuationTransformer();
 
-    public static RuntimeTransformer getInstance() {
+    public static ContinuationTransformer getInstance() {
         return INSTANCE;
     }
 

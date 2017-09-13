@@ -20,14 +20,7 @@ import com.chank.vertx.continuation.Sync;
 import io.vertx.core.Vertx;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.http.HttpClientResponse;
-import jdk.internal.org.objectweb.asm.*;
 import jdk.internal.org.objectweb.asm.tree.ClassNode;
-import jdk.internal.org.objectweb.asm.tree.FieldNode;
-import jdk.internal.org.objectweb.asm.tree.MethodNode;
-
-import java.io.InputStream;
-
-import static jdk.internal.org.objectweb.asm.Opcodes.*;
 
 
 /**
