@@ -15,3 +15,6 @@
  */
 
 rootProject.name = 'vertx-continuation'
+
+include 'continuation-agent'
+include 'continuation-test'
