@@ -16,9 +16,20 @@
 
 package com.chank.vertx.continuation;
 
+import jdk.internal.org.objectweb.asm.ClassReader;
+import jdk.internal.org.objectweb.asm.ClassVisitor;
+import jdk.internal.org.objectweb.asm.ClassWriter;
+import jdk.internal.org.objectweb.asm.MethodVisitor;
+import jdk.internal.org.objectweb.asm.tree.ClassNode;
+import jdk.internal.org.objectweb.asm.tree.MethodNode;
+
 import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.IllegalClassFormatException;
 import java.security.ProtectionDomain;
+import java.util.Iterator;
+import java.util.List;
+
+import static jdk.internal.org.objectweb.asm.Opcodes.ASM5;
 
 /**
  * @author Chank
@@ -37,7 +48,27 @@ public final class ContinuationTransformer implements ClassFileTransformer {
             Class<?> classBeingRedefined,
             ProtectionDomain protectionDomain,
             byte[] classfileBuffer) throws IllegalClassFormatException {
-        System.out.println("Transforming class name: " + className);
+        if (className.equals("com/chank/vertx/continuation/test/VertxContinuationTest")) {
+            try {
+                ClassNode classNode = new ClassNode();
+                ClassReader classReader = new ClassReader(classfileBuffer);
+                classReader.accept(classNode, 0);
+
+                Iterator<MethodNode> methodNodeIterator = classNode.methods.iterator();
+                while (methodNodeIterator.hasNext()) {
+                    MethodNode methodNode = methodNodeIterator.next();
+                    System.out.println("Method name: " + methodNode.name);
+                    if (methodNode.name.equals("awaitTest")) {
+                        methodNodeIterator.remove();
+                    }
+                }
+
+                ClassWriter classWriter = new ClassWriter(0);
+                classNode.accept(classWriter);
+                return classWriter.toByteArray();
+            } catch (Exception e) {
+            }
+        }
         return classfileBuffer;
     }
 

@@ -51,18 +51,12 @@ public class VertxContinuationTest {
     }
 
     public static void main(String[] args) throws Exception {
-        test();
-        awaitTest();
-//        ClassNode cn = new ClassNode();
-//        cn.version = V1_5;
-//        cn.access = ACC_PUBLIC + ACC_ABSTRACT + ACC_INTERFACE;
-//        cn.name = "pkg/Comparable";
-//        cn.superName = "java/lang/Object";
-//        cn.interfaces.add("pkg/Mesurable");
-//        cn.fields.add(new FieldNode(ACC_PUBLIC + ACC_FINAL + ACC_STATIC, "LESS", "I", null, -1));
-//        cn.fields.add(new FieldNode(ACC_PUBLIC + ACC_FINAL + ACC_STATIC, "EQUAL", "I", null, 1));
-//        cn.fields.add(new FieldNode(ACC_PUBLIC + ACC_FINAL + ACC_STATIC, "GREATER", "I", null, 1));
-//        cn.methods.add(new MethodNode(ACC_PUBLIC + ACC_ABSTRACT, "compareTo", "(Ljava/lang/Object;)I", null, null));
+        try {
+            test();
+            awaitTest();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
