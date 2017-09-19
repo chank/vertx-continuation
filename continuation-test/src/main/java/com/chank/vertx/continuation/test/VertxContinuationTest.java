@@ -32,7 +32,7 @@ public class VertxContinuationTest {
 
     public static void test() throws Exception {
         Vertx vertx = Vertx.vertx();
-        vertx.createHttpClient().getNow("www.baidu.com","/", resp -> {
+        vertx.createHttpClient().getNow("www.baidu.com", "/", resp -> {
             System.out.println("Gota response " + resp.statusCode());
             resp.bodyHandler(body -> {
                 System.out.println("Gota data " + body.toString("ISO-8859-1"));
